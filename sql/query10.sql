@@ -2,8 +2,8 @@ PRAGMA foreign_keys = ON;
 
 ------------------------------------------------------------
 -- Q10) Handle NULLs with COALESCE:
---     Show student, course, and grade; replace NULL grades
---     with 'In Progress'.
+-- Question: How can we show all student grades, but replace
+-- NULL values with the text 'In Progress'?
 ------------------------------------------------------------
 SELECT
   s.student_name,
