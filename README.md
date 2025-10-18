@@ -392,11 +392,9 @@ ORDER BY s.student_name, c.course_code;
 ---
 
 ### Running queries
-- Run each query in SQLite using:
+- I ran each query in SQLite using:
   ```bash
-  sqlite3 db/guidebook.db < sql/queries.sql
+  sqlite3 db/guidebook.db < sql/query(#).sql
   ```
-- Capture screenshots of your results for each section and paste them below each “📊 Output” placeholder.
-- Commit all `.sql` and `.md` files to your GitHub repo for submission.
 
 ---
