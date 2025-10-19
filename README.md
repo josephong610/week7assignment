@@ -155,9 +155,13 @@ ORDER BY s.student_name;
 ```
 
 **Output:**
-100|Alex Rivera|2024|Statistical Science
-107|Jamie Park|2025|Statistical Science
-105|Riley Zhang|2023|Statistical Science
+
+| Student ID | Student Name | Start Year | Department          |
+|-------------|--------------|-------------|----------------------|
+| 100         | Alex Rivera  | 2024        | Statistical Science  |
+| 107         | Jamie Park   | 2025        | Statistical Science  |
+| 105         | Riley Zhang  | 2023        | Statistical Science  |
+
 
 ---
 
@@ -177,6 +181,7 @@ ORDER BY total_enrolled_students DESC, d.dept_name;
 ```
 
 **Output:**
+```text
 Statistical Science|7|3.0
 Computer Science|6|3.0
 Economics|3|3.0
@@ -185,6 +190,7 @@ Biology|1|3.0
 Mathematics|1|3.0
 Physics|1|4.0
 Public Policy|1|3.0
+```
 ---
 
 ### 4. Display Students with Their Courses and Instructors
@@ -205,6 +211,7 @@ ORDER BY s.student_name, c.course_code;
 ```
 
 **Output:**
+```text
 Alex Rivera|CS-571|Data Engineering|Dr. Patel|A-
 Alex Rivera|CS-580|Database Systems|Dr. Patel|
 Alex Rivera|STA-602|Modern Regression|Dr. Li|A
@@ -233,6 +240,7 @@ Sam Patel|STA-610|Hierarchical Models|Dr. Chen|A-
 Skyler Adams|CS-580|Database Systems|Dr. Patel|
 Skyler Adams|CS-585|Advanced Databases|Dr. Gomez|
 Taylor Brooks|ECE-685|Machine Learning|Dr. Kim|B+
+```
 ---
 
 ### 5. Categorize Grades Using CASE
@@ -258,6 +266,7 @@ ORDER BY grade_category DESC, s.student_name;
 ```
 
 **Output:**
+```text
 Alex Rivera|CS-580|Database Systems||Incomplete
 Casey Nguyen|CS-580|Database Systems||Incomplete
 Drew Thompson|STA-602-2025S|Modern Regression||Incomplete
@@ -286,6 +295,7 @@ Casey Nguyen|CS-571|Data Engineering|B|Average
 Harper Scott|ECON-501|Microeconomic Theory|B|Average
 Peyton Morales|ECE-685|Machine Learning|B|Average
 Sam Patel|STA-602|Modern Regression|B|Average
+```
 ---
 
 ### 6. Rank Students by GPA Within Each Department
@@ -321,6 +331,7 @@ ORDER BY d.dept_name, dept_gpa_rank;
 ```
 
 **Output:**
+```text
 Biology|Peyton Morales|3.0|1
 Computer Science|Jordan Lee|3.65|1
 Computer Science|Casey Nguyen|3.0|2
@@ -333,7 +344,7 @@ Statistical Science|Riley Zhang|4.0|1
 Statistical Science|Alex Rivera|3.85|2
 Statistical Science|Charlie Morgan|3.7|3
 Statistical Science|Sam Patel|3.35|4
-
+```
 ---
 
 ### 7. Find the Top 3 Students Per Department (CTE)
@@ -374,6 +385,7 @@ ORDER BY dept_name, dept_rank;
 ```
 
 **Output:**
+```text
 Biology|Peyton Morales|3.0|1
 Computer Science|Jordan Lee|3.65|1
 Computer Science|Casey Nguyen|3.0|2
@@ -385,6 +397,7 @@ Public Policy|Drew Thompson|4.0|1
 Statistical Science|Riley Zhang|4.0|1
 Statistical Science|Alex Rivera|3.85|2
 Statistical Science|Charlie Morgan|3.7|3
+```
 ---
 
 ### 8. Analyze Instructor Tenure Using Date Functions
@@ -402,6 +415,7 @@ ORDER BY years_teaching DESC, i.instr_name;
 ```
 
 **Output:**
+```text
 Dr. Martin|Mathematics|2012|13
 Dr. Rivera|Electrical & Computer Engineering|2013|12
 Dr. Gomez|Computer Science|2014|11
@@ -412,7 +426,7 @@ Dr. Patel|Computer Science|2018|7
 Dr. Kim|Electrical & Computer Engineering|2019|6
 Dr. Chen|Statistical Science|2020|5
 Dr. Oneill|Economics|2021|4
-
+```
 ---
 
 ### 9. Compare Students Using Set Operations
@@ -448,9 +462,11 @@ ORDER BY student_name;
 ```
 
 **Output:**
+```text
 101|Jordan Lee
 109|Quinn Davis
 112|Skyler Adams
+```
 ---
 
 ### 10. Replace Missing Grades Using COALESCE
@@ -469,6 +485,7 @@ ORDER BY s.student_name, c.course_code;
 ```
 
 **Output:**
+```text
 Alex Rivera|CS-571|Data Engineering|A-
 Alex Rivera|CS-580|Database Systems|In Progress
 Alex Rivera|STA-602|Modern Regression|A
@@ -497,7 +514,7 @@ Sam Patel|STA-610|Hierarchical Models|A-
 Skyler Adams|CS-580|Database Systems|In Progress
 Skyler Adams|CS-585|Advanced Databases|In Progress
 Taylor Brooks|ECE-685|Machine Learning|B+
-
+```
 ---
 
 ## Summary of SQL Concepts Demonstrated
