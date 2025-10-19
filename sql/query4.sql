@@ -1,10 +1,9 @@
 PRAGMA foreign_keys = ON;
 
-------------------------------------------------------------
 -- Q4) INNER JOIN + LEFT JOIN:
 -- Question: List all students and their enrolled courses, showing
 -- course titles and instructors — including students with no enrollments.
-------------------------------------------------------------
+
 SELECT
   s.student_name,
   c.course_code,

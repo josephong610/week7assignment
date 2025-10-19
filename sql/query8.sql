@@ -1,10 +1,8 @@
 PRAGMA foreign_keys = ON;
 
-------------------------------------------------------------
 -- Q8) String/Date functions:
 -- Question: For each instructor, what year were they hired and
 -- how many years have they been teaching as of 2025?
-------------------------------------------------------------
 SELECT
   i.instr_name,
   d.dept_name,

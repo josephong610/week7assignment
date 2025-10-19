@@ -1,9 +1,7 @@
 PRAGMA foreign_keys = ON;
 
-------------------------------------------------------------
 -- Q6) Window functions (RANK over PARTITION BY):
 -- Question: How can we rank students by GPA within each department?
-------------------------------------------------------------
 WITH numeric_grades AS (
   SELECT
     e.student_id,

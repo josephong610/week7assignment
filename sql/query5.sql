@@ -3,6 +3,7 @@ PRAGMA foreign_keys = ON;
 -- Q5) Data transformation with CASE:
 -- Question: How can we categorize students’ letter grades into
 -- performance groups (Excellent, Good, Average, or Incomplete)?
+
 SELECT
   s.student_name,
   c.course_code,
