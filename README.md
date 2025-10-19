@@ -181,16 +181,17 @@ ORDER BY total_enrolled_students DESC, d.dept_name;
 ```
 
 **Output:**
-```text
-Statistical Science|7|3.0
-Computer Science|6|3.0
-Economics|3|3.0
-Electrical & Computer Engineering|3|3.33
-Biology|1|3.0
-Mathematics|1|3.0
-Physics|1|4.0
-Public Policy|1|3.0
-```
+
+| Department                      | Total Enrolled Students | Avg. Credits per Course |
+|----------------------------------|--------------------------|--------------------------|
+| Statistical Science              | 7                        | 3.00                     |
+| Computer Science                 | 6                        | 3.00                     |
+| Economics                        | 3                        | 3.00                     |
+| Electrical & Computer Engineering| 3                        | 3.33                     |
+| Biology                          | 1                        | 3.00                     |
+| Mathematics                      | 1                        | 3.00                     |
+| Physics                          | 1                        | 4.00                     |
+| Public Policy                    | 1                        | 3.00                     |
 ---
 
 ### 4. Display Students with Their Courses and Instructors
@@ -211,36 +212,40 @@ ORDER BY s.student_name, c.course_code;
 ```
 
 **Output:**
-```text
-Alex Rivera|CS-571|Data Engineering|Dr. Patel|A-
-Alex Rivera|CS-580|Database Systems|Dr. Patel|
-Alex Rivera|STA-602|Modern Regression|Dr. Li|A
-Avery Johnson|MATH-510|Statistical Theory I|Dr. Martin|A-
-Avery Johnson|STA-602|Modern Regression|Dr. Li|B+
-Casey Nguyen|CS-571|Data Engineering|Dr. Patel|B
-Casey Nguyen|CS-580|Database Systems|Dr. Patel|
-Charlie Morgan|STA-615|Bayesian Methods|Dr. Chen|A-
-Drew Thompson|PPOL-540|Policy Analytics|Dr. Alvarez|A
-Drew Thompson|STA-602-2025S|Modern Regression|Dr. Li|
-Harper Scott|CS-585|Advanced Databases|Dr. Gomez|
-Harper Scott|ECON-501|Microeconomic Theory|Dr. Alvarez|B
-Jamie Park|STA-602-2025S|Modern Regression|Dr. Li|
-Jordan Lee|CS-571|Data Engineering|Dr. Patel|B+
-Jordan Lee|ECON-501|Microeconomic Theory|Dr. Alvarez|A
-Morgan Chen|ECON-501|Microeconomic Theory|Dr. Alvarez|
-Peyton Morales|BIO-530|Bioinformatics|Dr. Singh|
-Peyton Morales|ECE-685|Machine Learning|Dr. Kim|B
-Quinn Davis|CS-571|Data Engineering|Dr. Patel|A
-Quinn Davis|PHYS-520|Computational Physics|Dr. Gomez|B+
-Riley Zhang|STA-602|Modern Regression|Dr. Li|A
-Riley Zhang|STA-610|Hierarchical Models|Dr. Chen|A
-Rowan Bennett|ECE-690|Deep Learning Systems|Dr. Rivera|
-Sam Patel|STA-602|Modern Regression|Dr. Li|B
-Sam Patel|STA-610|Hierarchical Models|Dr. Chen|A-
-Skyler Adams|CS-580|Database Systems|Dr. Patel|
-Skyler Adams|CS-585|Advanced Databases|Dr. Gomez|
-Taylor Brooks|ECE-685|Machine Learning|Dr. Kim|B+
-```
+
+**Output:**
+
+| Student Name   | Course Code | Course Title            | Instructor      | Grade |
+|----------------|--------------|-------------------------|-----------------|--------|
+| Alex Rivera    | CS-571       | Data Engineering        | Dr. Patel       | A-     |
+| Alex Rivera    | CS-580       | Database Systems        | Dr. Patel       |        |
+| Alex Rivera    | STA-602      | Modern Regression       | Dr. Li          | A      |
+| Avery Johnson  | MATH-510     | Statistical Theory I    | Dr. Martin      | A-     |
+| Avery Johnson  | STA-602      | Modern Regression       | Dr. Li          | B+     |
+| Casey Nguyen   | CS-571       | Data Engineering        | Dr. Patel       | B      |
+| Casey Nguyen   | CS-580       | Database Systems        | Dr. Patel       |        |
+| Charlie Morgan | STA-615      | Bayesian Methods        | Dr. Chen        | A-     |
+| Drew Thompson  | PPOL-540     | Policy Analytics        | Dr. Alvarez     | A      |
+| Drew Thompson  | STA-602-2025S| Modern Regression       | Dr. Li          |        |
+| Harper Scott   | CS-585       | Advanced Databases      | Dr. Gomez       |        |
+| Harper Scott   | ECON-501     | Microeconomic Theory    | Dr. Alvarez     | B      |
+| Jamie Park     | STA-602-2025S| Modern Regression       | Dr. Li          |        |
+| Jordan Lee     | CS-571       | Data Engineering        | Dr. Patel       | B+     |
+| Jordan Lee     | ECON-501     | Microeconomic Theory    | Dr. Alvarez     | A      |
+| Morgan Chen    | ECON-501     | Microeconomic Theory    | Dr. Alvarez     |        |
+| Peyton Morales | BIO-530      | Bioinformatics          | Dr. Singh       |        |
+| Peyton Morales | ECE-685      | Machine Learning        | Dr. Kim         | B      |
+| Quinn Davis    | CS-571       | Data Engineering        | Dr. Patel       | A      |
+| Quinn Davis    | PHYS-520     | Computational Physics   | Dr. Gomez       | B+     |
+| Riley Zhang    | STA-602      | Modern Regression       | Dr. Li          | A      |
+| Riley Zhang    | STA-610      | Hierarchical Models     | Dr. Chen        | A      |
+| Rowan Bennett  | ECE-690      | Deep Learning Systems   | Dr. Rivera      |        |
+| Sam Patel      | STA-602      | Modern Regression       | Dr. Li          | B      |
+| Sam Patel      | STA-610      | Hierarchical Models     | Dr. Chen        | A-     |
+| Skyler Adams   | CS-580       | Database Systems        | Dr. Patel       |        |
+| Skyler Adams   | CS-585       | Advanced Databases      | Dr. Gomez       |        |
+| Taylor Brooks  | ECE-685      | Machine Learning        | Dr. Kim         | B+     |
+
 ---
 
 ### 5. Categorize Grades Using CASE
@@ -266,36 +271,37 @@ ORDER BY grade_category DESC, s.student_name;
 ```
 
 **Output:**
-```text
-Alex Rivera|CS-580|Database Systems||Incomplete
-Casey Nguyen|CS-580|Database Systems||Incomplete
-Drew Thompson|STA-602-2025S|Modern Regression||Incomplete
-Harper Scott|CS-585|Advanced Databases||Incomplete
-Jamie Park|STA-602-2025S|Modern Regression||Incomplete
-Morgan Chen|ECON-501|Microeconomic Theory||Incomplete
-Peyton Morales|BIO-530|Bioinformatics||Incomplete
-Rowan Bennett|ECE-690|Deep Learning Systems||Incomplete
-Skyler Adams|CS-585|Advanced Databases||Incomplete
-Skyler Adams|CS-580|Database Systems||Incomplete
-Avery Johnson|STA-602|Modern Regression|B+|Good
-Jordan Lee|CS-571|Data Engineering|B+|Good
-Quinn Davis|PHYS-520|Computational Physics|B+|Good
-Taylor Brooks|ECE-685|Machine Learning|B+|Good
-Alex Rivera|STA-602|Modern Regression|A|Excellent
-Alex Rivera|CS-571|Data Engineering|A-|Excellent
-Avery Johnson|MATH-510|Statistical Theory I|A-|Excellent
-Charlie Morgan|STA-615|Bayesian Methods|A-|Excellent
-Drew Thompson|PPOL-540|Policy Analytics|A|Excellent
-Jordan Lee|ECON-501|Microeconomic Theory|A|Excellent
-Quinn Davis|CS-571|Data Engineering|A|Excellent
-Riley Zhang|STA-602|Modern Regression|A|Excellent
-Riley Zhang|STA-610|Hierarchical Models|A|Excellent
-Sam Patel|STA-610|Hierarchical Models|A-|Excellent
-Casey Nguyen|CS-571|Data Engineering|B|Average
-Harper Scott|ECON-501|Microeconomic Theory|B|Average
-Peyton Morales|ECE-685|Machine Learning|B|Average
-Sam Patel|STA-602|Modern Regression|B|Average
-```
+
+| Student Name   | Course Code     | Course Title             | Grade | Grade Category |
+|----------------|-----------------|---------------------------|--------|----------------|
+| Alex Rivera    | CS-580          | Database Systems          |        | Incomplete     |
+| Casey Nguyen   | CS-580          | Database Systems          |        | Incomplete     |
+| Drew Thompson  | STA-602-2025S   | Modern Regression         |        | Incomplete     |
+| Harper Scott   | CS-585          | Advanced Databases        |        | Incomplete     |
+| Jamie Park     | STA-602-2025S   | Modern Regression         |        | Incomplete     |
+| Morgan Chen    | ECON-501        | Microeconomic Theory      |        | Incomplete     |
+| Peyton Morales | BIO-530         | Bioinformatics            |        | Incomplete     |
+| Rowan Bennett  | ECE-690         | Deep Learning Systems     |        | Incomplete     |
+| Skyler Adams   | CS-585          | Advanced Databases        |        | Incomplete     |
+| Skyler Adams   | CS-580          | Database Systems          |        | Incomplete     |
+| Avery Johnson  | STA-602         | Modern Regression         | B+     | Good           |
+| Jordan Lee     | CS-571          | Data Engineering          | B+     | Good           |
+| Quinn Davis    | PHYS-520        | Computational Physics     | B+     | Good           |
+| Taylor Brooks  | ECE-685         | Machine Learning          | B+     | Good           |
+| Alex Rivera    | STA-602         | Modern Regression         | A      | Excellent      |
+| Alex Rivera    | CS-571          | Data Engineering          | A-     | Excellent      |
+| Avery Johnson  | MATH-510        | Statistical Theory I      | A-     | Excellent      |
+| Charlie Morgan | STA-615         | Bayesian Methods          | A-     | Excellent      |
+| Drew Thompson  | PPOL-540        | Policy Analytics          | A      | Excellent      |
+| Jordan Lee     | ECON-501        | Microeconomic Theory      | A      | Excellent      |
+| Quinn Davis    | CS-571          | Data Engineering          | A      | Excellent      |
+| Riley Zhang    | STA-602         | Modern Regression         | A      | Excellent      |
+| Riley Zhang    | STA-610         | Hierarchical Models       | A      | Excellent      |
+| Sam Patel      | STA-610         | Hierarchical Models       | A-     | Excellent      |
+| Casey Nguyen   | CS-571          | Data Engineering          | B      | Average        |
+| Harper Scott   | ECON-501        | Microeconomic Theory      | B      | Average        |
+| Peyton Morales | ECE-685         | Machine Learning          | B      | Average        |
+| Sam Patel      | STA-602         | Modern Regression         | B      | Average        |
 ---
 
 ### 6. Rank Students by GPA Within Each Department
@@ -331,20 +337,21 @@ ORDER BY d.dept_name, dept_gpa_rank;
 ```
 
 **Output:**
-```text
-Biology|Peyton Morales|3.0|1
-Computer Science|Jordan Lee|3.65|1
-Computer Science|Casey Nguyen|3.0|2
-Economics|Harper Scott|3.0|1
-Electrical & Computer Engineering|Taylor Brooks|3.3|1
-Mathematics|Avery Johnson|3.5|1
-Physics|Quinn Davis|3.65|1
-Public Policy|Drew Thompson|4.0|1
-Statistical Science|Riley Zhang|4.0|1
-Statistical Science|Alex Rivera|3.85|2
-Statistical Science|Charlie Morgan|3.7|3
-Statistical Science|Sam Patel|3.35|4
-```
+
+| Department                      | Student Name   | GPA  | Dept GPA Rank |
+|----------------------------------|----------------|------|----------------|
+| Biology                          | Peyton Morales | 3.00 | 1              |
+| Computer Science                 | Jordan Lee     | 3.65 | 1              |
+| Computer Science                 | Casey Nguyen   | 3.00 | 2              |
+| Economics                        | Harper Scott   | 3.00 | 1              |
+| Electrical & Computer Engineering| Taylor Brooks  | 3.30 | 1              |
+| Mathematics                      | Avery Johnson  | 3.50 | 1              |
+| Physics                          | Quinn Davis    | 3.65 | 1              |
+| Public Policy                    | Drew Thompson  | 4.00 | 1              |
+| Statistical Science              | Riley Zhang    | 4.00 | 1              |
+| Statistical Science              | Alex Rivera    | 3.85 | 2              |
+| Statistical Science              | Charlie Morgan | 3.70 | 3              |
+| Statistical Science              | Sam Patel      | 3.35 | 4              |
 ---
 
 ### 7. Find the Top 3 Students Per Department (CTE)
@@ -385,19 +392,20 @@ ORDER BY dept_name, dept_rank;
 ```
 
 **Output:**
-```text
-Biology|Peyton Morales|3.0|1
-Computer Science|Jordan Lee|3.65|1
-Computer Science|Casey Nguyen|3.0|2
-Economics|Harper Scott|3.0|1
-Electrical & Computer Engineering|Taylor Brooks|3.3|1
-Mathematics|Avery Johnson|3.5|1
-Physics|Quinn Davis|3.65|1
-Public Policy|Drew Thompson|4.0|1
-Statistical Science|Riley Zhang|4.0|1
-Statistical Science|Alex Rivera|3.85|2
-Statistical Science|Charlie Morgan|3.7|3
-```
+
+| Department                       | Student Name   | GPA  | Dept Rank |
+|----------------------------------|----------------|------|------------|
+| Biology                          | Peyton Morales | 3.00 | 1          |
+| Computer Science                 | Jordan Lee     | 3.65 | 1          |
+| Computer Science                 | Casey Nguyen   | 3.00 | 2          |
+| Economics                        | Harper Scott   | 3.00 | 1          |
+| Electrical & Computer Engineering| Taylor Brooks  | 3.30 | 1          |
+| Mathematics                      | Avery Johnson  | 3.50 | 1          |
+| Physics                          | Quinn Davis    | 3.65 | 1          |
+| Public Policy                    | Drew Thompson  | 4.00 | 1          |
+| Statistical Science              | Riley Zhang    | 4.00 | 1          |
+| Statistical Science              | Alex Rivera    | 3.85 | 2          |
+| Statistical Science              | Charlie Morgan | 3.70 | 3          |
 ---
 
 ### 8. Analyze Instructor Tenure Using Date Functions
@@ -415,18 +423,19 @@ ORDER BY years_teaching DESC, i.instr_name;
 ```
 
 **Output:**
-```text
-Dr. Martin|Mathematics|2012|13
-Dr. Rivera|Electrical & Computer Engineering|2013|12
-Dr. Gomez|Computer Science|2014|11
-Dr. Alvarez|Economics|2015|10
-Dr. Li|Statistical Science|2016|9
-Dr. Singh|Statistical Science|2017|8
-Dr. Patel|Computer Science|2018|7
-Dr. Kim|Electrical & Computer Engineering|2019|6
-Dr. Chen|Statistical Science|2020|5
-Dr. Oneill|Economics|2021|4
-```
+
+| Instructor   | Department                      | Hire Year | Years Teaching |
+|---------------|----------------------------------|------------|----------------|
+| Dr. Martin    | Mathematics                     | 2012       | 13             |
+| Dr. Rivera    | Electrical & Computer Engineering| 2013       | 12             |
+| Dr. Gomez     | Computer Science                | 2014       | 11             |
+| Dr. Alvarez   | Economics                       | 2015       | 10             |
+| Dr. Li        | Statistical Science             | 2016       | 9              |
+| Dr. Singh     | Statistical Science             | 2017       | 8              |
+| Dr. Patel     | Computer Science                | 2018       | 7              |
+| Dr. Kim       | Electrical & Computer Engineering| 2019      | 6              |
+| Dr. Chen      | Statistical Science             | 2020       | 5              |
+| Dr. Oneill    | Economics                       | 2021       | 4              |
 ---
 
 ### 9. Compare Students Using Set Operations
@@ -462,11 +471,12 @@ ORDER BY student_name;
 ```
 
 **Output:**
-```text
-101|Jordan Lee
-109|Quinn Davis
-112|Skyler Adams
-```
+
+| Student ID | Student Name |
+|-------------|---------------|
+| 101         | Jordan Lee    |
+| 109         | Quinn Davis   |
+| 112         | Skyler Adams  |
 ---
 
 ### 10. Replace Missing Grades Using COALESCE
@@ -485,36 +495,37 @@ ORDER BY s.student_name, c.course_code;
 ```
 
 **Output:**
-```text
-Alex Rivera|CS-571|Data Engineering|A-
-Alex Rivera|CS-580|Database Systems|In Progress
-Alex Rivera|STA-602|Modern Regression|A
-Avery Johnson|MATH-510|Statistical Theory I|A-
-Avery Johnson|STA-602|Modern Regression|B+
-Casey Nguyen|CS-571|Data Engineering|B
-Casey Nguyen|CS-580|Database Systems|In Progress
-Charlie Morgan|STA-615|Bayesian Methods|A-
-Drew Thompson|PPOL-540|Policy Analytics|A
-Drew Thompson|STA-602-2025S|Modern Regression|In Progress
-Harper Scott|CS-585|Advanced Databases|In Progress
-Harper Scott|ECON-501|Microeconomic Theory|B
-Jamie Park|STA-602-2025S|Modern Regression|In Progress
-Jordan Lee|CS-571|Data Engineering|B+
-Jordan Lee|ECON-501|Microeconomic Theory|A
-Morgan Chen|ECON-501|Microeconomic Theory|In Progress
-Peyton Morales|BIO-530|Bioinformatics|In Progress
-Peyton Morales|ECE-685|Machine Learning|B
-Quinn Davis|CS-571|Data Engineering|A
-Quinn Davis|PHYS-520|Computational Physics|B+
-Riley Zhang|STA-602|Modern Regression|A
-Riley Zhang|STA-610|Hierarchical Models|A
-Rowan Bennett|ECE-690|Deep Learning Systems|In Progress
-Sam Patel|STA-602|Modern Regression|B
-Sam Patel|STA-610|Hierarchical Models|A-
-Skyler Adams|CS-580|Database Systems|In Progress
-Skyler Adams|CS-585|Advanced Databases|In Progress
-Taylor Brooks|ECE-685|Machine Learning|B+
-```
+
+| Student Name   | Course Code   | Course Title             | Displayed Grade |
+|----------------|----------------|---------------------------|-----------------|
+| Alex Rivera    | CS-571         | Data Engineering          | A-              |
+| Alex Rivera    | CS-580         | Database Systems          | In Progress     |
+| Alex Rivera    | STA-602        | Modern Regression         | A               |
+| Avery Johnson  | MATH-510       | Statistical Theory I      | A-              |
+| Avery Johnson  | STA-602        | Modern Regression         | B+              |
+| Casey Nguyen   | CS-571         | Data Engineering          | B               |
+| Casey Nguyen   | CS-580         | Database Systems          | In Progress     |
+| Charlie Morgan | STA-615        | Bayesian Methods          | A-              |
+| Drew Thompson  | PPOL-540       | Policy Analytics          | A               |
+| Drew Thompson  | STA-602-2025S  | Modern Regression         | In Progress     |
+| Harper Scott   | CS-585         | Advanced Databases        | In Progress     |
+| Harper Scott   | ECON-501       | Microeconomic Theory      | B               |
+| Jamie Park     | STA-602-2025S  | Modern Regression         | In Progress     |
+| Jordan Lee     | CS-571         | Data Engineering          | B+              |
+| Jordan Lee     | ECON-501       | Microeconomic Theory      | A               |
+| Morgan Chen    | ECON-501       | Microeconomic Theory      | In Progress     |
+| Peyton Morales | BIO-530        | Bioinformatics            | In Progress     |
+| Peyton Morales | ECE-685        | Machine Learning          | B               |
+| Quinn Davis    | CS-571         | Data Engineering          | A               |
+| Quinn Davis    | PHYS-520       | Computational Physics     | B+              |
+| Riley Zhang    | STA-602        | Modern Regression         | A               |
+| Riley Zhang    | STA-610        | Hierarchical Models       | A               |
+| Rowan Bennett  | ECE-690        | Deep Learning Systems     | In Progress     |
+| Sam Patel      | STA-602        | Modern Regression         | B               |
+| Sam Patel      | STA-610        | Hierarchical Models       | A-              |
+| Skyler Adams   | CS-580         | Database Systems          | In Progress     |
+| Skyler Adams   | CS-585         | Advanced Databases        | In Progress     |
+| Taylor Brooks  | ECE-685        | Machine Learning          | B+              |
 ---
 
 ## Summary of SQL Concepts Demonstrated
