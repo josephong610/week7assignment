@@ -40,6 +40,6 @@ WHERE g.gpa >= 3.7
 ORDER BY g.gpa DESC;
 
 -- Quick peek
--- SELECT * FROM high_performers ORDER BY gpa DESC;
+SELECT * FROM high_performers ORDER BY gpa DESC;
 
 

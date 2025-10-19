@@ -13,7 +13,7 @@ Each table is linked using **foreign keys**, and together they simulate a small 
 
 ## Table Descriptions and Sample Data
 
-Below is a quick reference for each table, its purpose, and an example of what a few rows of data look like.
+Below is a quick reference for each table, its purpose, and an example of what a few rows of data look like. You can find how I set schema up in sql/schema.sql and the data that I populated with is in sql/seed.sql
 
 ### `departments`
 Stores all academic departments available in the university.
@@ -101,9 +101,7 @@ A many-to-many relationship table connecting `students` and `courses`, with grad
 
 ## Query Documentation
 
-Below are the 10 SQL questions and their associated queries.  
-Each section includes a title, short description, and the SQL statement.  
-You can add your **query outputs or screenshots** beneath each code block.
+Below are the 10 SQL questions and their associated queries.
 
 ---
 
@@ -111,18 +109,25 @@ You can add your **query outputs or screenshots** beneath each code block.
 **Goal:** Create a new table that stores students who achieved a GPA of **3.7 or higher** based on their course grades.
 
 ```sql
-CREATE TABLE high_performers (...);
+DROP TABLE IF EXISTS high_performers;
+
+CREATE TABLE high_performers (
+  student_id   INTEGER PRIMARY KEY,
+  student_name TEXT NOT NULL,
+  gpa          REAL NOT NULL
+);
 
 INSERT INTO high_performers (student_id, student_name, gpa)
 WITH numeric_grades AS (
-  SELECT e.student_id,
-         CASE e.grade
-           WHEN 'A'  THEN 4.0
-           WHEN 'A-' THEN 3.7
-           WHEN 'B+' THEN 3.3
-           WHEN 'B'  THEN 3.0
-           ELSE NULL
-         END AS g
+  SELECT
+    e.student_id,
+    CASE e.grade
+      WHEN 'A'  THEN 4.0
+      WHEN 'A-' THEN 3.7
+      WHEN 'B+' THEN 3.3
+      WHEN 'B'  THEN 3.0
+      ELSE NULL
+    END AS g
   FROM enrollments e
 ),
 gpa_by_student AS (
@@ -136,9 +141,19 @@ FROM gpa_by_student g
 JOIN students s USING (student_id)
 WHERE g.gpa >= 3.7
 ORDER BY g.gpa DESC;
+
+SELECT * FROM high_performers ORDER BY gpa DESC;
 ```
 
-**Output:** *(add screenshot or query results here)*
+**Output:**
+| Student ID | Student Name   | GPA  |
+|-------------|----------------|------|
+| 105         | Riley Zhang    | 4.00 |
+| 111         | Drew Thompson  | 4.00 |
+| 100         | Alex Rivera    | 3.85 |
+| 115         | Charlie Morgan | 3.70 |
+
+As stated above, this query creates a new table that stores students that have a high GPA. I have selected the high performers to show that the table actually exists after creating it.
 
 ---
 
@@ -162,6 +177,7 @@ ORDER BY s.student_name;
 | 107         | Jamie Park   | 2025        | Statistical Science  |
 | 105         | Riley Zhang  | 2023        | Statistical Science  |
 
+The table shows that the query does indeed return the students who are in Statistical Science after 2023 in alphabetical order. It seems there are three students that fit this criteria.
 
 ---
 
@@ -192,6 +208,8 @@ ORDER BY total_enrolled_students DESC, d.dept_name;
 | Mathematics                      | 1                        | 3.00                     |
 | Physics                          | 1                        | 4.00                     |
 | Public Policy                    | 1                        | 3.00                     |
+
+The table shows the total students for each department and their average credits per course. It seems in my mock data that everyone seems to take around 3 credits per course.
 ---
 
 ### 4. Display Students with Their Courses and Instructors
@@ -210,8 +228,6 @@ LEFT JOIN courses c     ON c.course_id = e.course_id
 LEFT JOIN instructors i ON i.instr_id  = c.instr_id
 ORDER BY s.student_name, c.course_code;
 ```
-
-**Output:**
 
 **Output:**
 
@@ -246,6 +262,8 @@ ORDER BY s.student_name, c.course_code;
 | Skyler Adams   | CS-585       | Advanced Databases      | Dr. Gomez       |        |
 | Taylor Brooks  | ECE-685      | Machine Learning        | Dr. Kim         | B+     |
 
+
+This just gives a nice view of the data and seeing which students have grades or don't have grades yet.
 ---
 
 ### 5. Categorize Grades Using CASE
@@ -302,6 +320,8 @@ ORDER BY grade_category DESC, s.student_name;
 | Harper Scott   | ECON-501        | Microeconomic Theory      | B      | Average        |
 | Peyton Morales | ECE-685         | Machine Learning          | B      | Average        |
 | Sam Patel      | STA-602         | Modern Regression         | B      | Average        |
+
+It seems that in my databse, students are only getting As and Bs, with nobody getting Cs yet.
 ---
 
 ### 6. Rank Students by GPA Within Each Department
@@ -352,6 +372,8 @@ ORDER BY d.dept_name, dept_gpa_rank;
 | Statistical Science              | Alex Rivera    | 3.85 | 2              |
 | Statistical Science              | Charlie Morgan | 3.70 | 3              |
 | Statistical Science              | Sam Patel      | 3.35 | 4              |
+
+We are seeing the students ranked by their GPA here. Some departments have only one student so they're automatically 1 for that department.
 ---
 
 ### 7. Find the Top 3 Students Per Department (CTE)
@@ -406,6 +428,8 @@ ORDER BY dept_name, dept_rank;
 | Statistical Science              | Riley Zhang    | 4.00 | 1          |
 | Statistical Science              | Alex Rivera    | 3.85 | 2          |
 | Statistical Science              | Charlie Morgan | 3.70 | 3          |
+
+This is kind of similar to the previous query, but we are using a CTE and rownumber to find the department ranks.
 ---
 
 ### 8. Analyze Instructor Tenure Using Date Functions
@@ -436,6 +460,8 @@ ORDER BY years_teaching DESC, i.instr_name;
 | Dr. Kim       | Electrical & Computer Engineering| 2019      | 6              |
 | Dr. Chen      | Statistical Science             | 2020       | 5              |
 | Dr. Oneill    | Economics                       | 2021       | 4              |
+
+It seems that all of the professors here are quite experienced in their teaching.
 ---
 
 ### 9. Compare Students Using Set Operations
@@ -477,6 +503,8 @@ ORDER BY student_name;
 | 101         | Jordan Lee    |
 | 109         | Quinn Davis   |
 | 112         | Skyler Adams  |
+
+It seems only three students are enrolled in only database or data engineering, but not both.
 ---
 
 ### 10. Replace Missing Grades Using COALESCE
@@ -526,30 +554,18 @@ ORDER BY s.student_name, c.course_code;
 | Skyler Adams   | CS-580         | Database Systems          | In Progress     |
 | Skyler Adams   | CS-585         | Advanced Databases        | In Progress     |
 | Taylor Brooks  | ECE-685        | Machine Learning          | B+              |
+
+This just replaces the blank values for people without a grade so that it shows In Progress. It looks nicer this way I think.
 ---
 
-## Summary of SQL Concepts Demonstrated
+### Conclusion
 
-| SQL Concept | Example Queries |
-|--------------|----------------|
-| `CREATE TABLE`, `INSERT` | Q1 |
-| `SELECT`, `FROM`, `WHERE`, `ORDER BY` | Q2 |
-| `GROUP BY`, `COUNT`, `AVG`, `HAVING` | Q3 |
-| `INNER JOIN`, `LEFT JOIN` | Q4 |
-| `CASE WHEN` for data transformation | Q5 |
-| `RANK()` and `PARTITION BY` | Q6 |
-| `CTE` with `ROW_NUMBER()` | Q7 |
-| String/Date functions | Q8 |
-| `UNION`, `EXCEPT` | Q9 |
-| `COALESCE()` for null handling | Q10 |
+Overall, I tried using as much of the SQL concepts into this assignment.
 
----
-
-### Running queries
 - I ran each query in SQLite using:
   ```bash
   sqlite3 db/guidebook.db < sql/query1.sql
   ```
-- (I replcaed the 1 with whichever query I wanted to run at the time)
+- (I replaced the 1 with whichever number query I wanted to run at the time)
 
 ---
